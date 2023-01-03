@@ -99,6 +99,9 @@ return packer.startup(function(use)
         ft = { "markdown" },
     })
 
+    -- undo tree
+    use("mbbill/undotree")
+
     if packer_boostrap then
         require("packer").sync()
     end
