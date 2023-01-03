@@ -36,3 +36,5 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>")
 
+-- trouble
+keymap.set("n", "<leader>t", "<cmd>TroubleToggle<cr>")

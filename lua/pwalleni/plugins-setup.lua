@@ -102,6 +102,9 @@ return packer.startup(function(use)
     -- undo tree
     use("mbbill/undotree")
 
+    -- trouble pane
+    use("folke/trouble.nvim")
+
     if packer_boostrap then
         require("packer").sync()
     end
