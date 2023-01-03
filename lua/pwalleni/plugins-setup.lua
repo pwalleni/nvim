@@ -41,8 +41,6 @@ return packer.startup(function(use)
 
     use("numToStr/Comment.nvim")
 
-    use("nvim-tree/nvim-tree.lua")
-
     use("kyazdani42/nvim-web-devicons")
 
     use("nvim-lualine/lualine.nvim")
