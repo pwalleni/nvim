@@ -105,6 +105,30 @@ return packer.startup(function(use)
     -- trouble pane
     use("folke/trouble.nvim")
 
+    -- which key
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
+
+    -- zen mode
+    use {
+      "folke/zen-mode.nvim",
+      config = function()
+        require("zen-mode").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
+
     if packer_boostrap then
         require("packer").sync()
     end

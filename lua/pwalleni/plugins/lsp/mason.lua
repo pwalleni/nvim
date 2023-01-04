@@ -20,10 +20,9 @@ mason_lspconfig.setup({
         "tsserver",
         "html",
         "cssls",
-        "tailwindcss",
         "sumneko_lua",
     },
-    automatic_installation = true,
+    automatic_installation = false,
 })
 
 mason_null_ls.setup({
