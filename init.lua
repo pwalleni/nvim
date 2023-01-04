@@ -9,7 +9,7 @@ require("pwalleni.plugins.nvim-cmp")
 require("pwalleni.plugins.lsp.mason")
 require("pwalleni.plugins.lsp.lspsaga")
 require("pwalleni.plugins.lsp.lspconfig")
+
 require("pwalleni.plugins.lsp.null-ls")
--- require("pwalleni.plugins.autopairs")
 require("pwalleni.plugins.treesitter")
 require("pwalleni.plugins.gitsigns")

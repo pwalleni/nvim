@@ -83,7 +83,6 @@ return packer.startup(function(use)
     })
 
     -- auto closing
-    use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
 
     -- gitsigns
