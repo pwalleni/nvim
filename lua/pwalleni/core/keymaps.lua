@@ -10,6 +10,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 keymap.set("n", "x", '"_x') -- delete but don't place i buffer
 
+keymap.set("n", "<C-k>", "gqip") -- rewrap paragraph
+
 keymap.set("n", "<leader>+", "<C-a>") -- increment number under cursor
 keymap.set("n", "<leader>-", "<C-x>") -- decrease number under cursor
 
