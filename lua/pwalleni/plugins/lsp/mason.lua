@@ -22,7 +22,7 @@ mason_lspconfig.setup({
 		"cssls",
 		"lua_ls",
 	},
-	automatic_installation = false,
+	automatic_installation = true,
 })
 
 mason_null_ls.setup({
