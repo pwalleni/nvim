@@ -1,40 +1,70 @@
--- diataxis_snippets.lua
 local ls = require("luasnip")
 local s = ls.snippet
-local t = ls.text
+local t = ls.text_node
 
-ls.snippets.all = {
-	s("tutorial", {
-		t("# Tutorial: "),
-		t("\n## Introduction\n"),
-		t("\n## Prerequisites\n"),
-		t("\n## Steps\n"),
-		t("\n1. "),
-		t("\n2. "),
-		t("\n## Conclusion\n"),
+local diataxis_snippets = {
+	s("diataxis-tutorial", {
+		t({
+			"# Tutorial: Your Tutorial Title Here",
+			"",
+			"## Introduction",
+			"",
+			"## Prerequisites",
+			"",
+			"## Steps",
+			"",
+			"1. Your step here",
+			"2. Your step here",
+			"",
+			"## Conclusion",
+			"",
+		}),
 	}),
-	s("howto", {
-		t("# How-to Guide: "),
-		t("\n## Requirements\n"),
-		t("\n## Step-by-Step Guide\n"),
-		t("\n1. "),
-		t("\n2. "),
-		t("\n## Additional Tips\n"),
+	s("diataxis-howto", {
+		t({
+			"# How-To Guide: Your How-To Title Here",
+			"",
+			"## Introduction",
+			"",
+			"## Steps",
+			"",
+			"1. Your step here",
+			"1. Your step here",
+			"",
+			"## Additional Resources",
+			"",
+		}),
 	}),
-	s("explanation", {
-		t("# Explanation: "),
-		t("\n## Background\n"),
-		t("\n## Main Concepts\n"),
-		t("\n1. "),
-		t("\n2. "),
-		t("\n## Summary\n"),
+	s("diataxis-explanation", {
+		t({
+			"# Explanation: Your Explanation Title Here",
+			"",
+			"## Background",
+			"",
+			"## Key Concepts",
+			"",
+			"1. Key concept 1",
+			"1. Key concept 2",
+			"",
+			"## Summary",
+			"",
+		}),
 	}),
-	s("reference", {
-		t("# Reference: "),
-		t("\n## Functions\n"),
-		t("\n### Function 1\n"),
-		t("\n- **Parameters:** "),
-		t("\n- **Returns:** "),
-		t("\n## Constants\n"),
+	s("diataxis-reference", {
+		t({
+			"# Reference: Your Reference Title Here",
+			"",
+			"## Functions",
+			"",
+			"### Function 1",
+			"",
+			"- **Parameters:**",
+			"- **Returns:**",
+			"",
+			"## Constants",
+			"",
+		}),
 	}),
 }
+
+ls.add_snippets("markdown", diataxis_snippets)

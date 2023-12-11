@@ -17,9 +17,7 @@ mason.setup()
 
 mason_lspconfig.setup({
 	ensure_installed = {
-		"tsserver",
 		"html",
-		"cssls",
 		"lua_ls",
 	},
 	automatic_installation = false,
@@ -29,7 +27,6 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"prettier",
 		"stylelua",
-		"eslint_d",
 		"vale",
 		"markdownlint",
 	},

@@ -32,9 +32,9 @@ return packer.startup(function(use)
 	-- use("bluz71/vim-nightfly-guicolors")
 	use({ "ellisonleao/gruvbox.nvim" })
 
-	use("christoomey/vim-tmux-navigator")
+	-- use("christoomey/vim-tmux-navigator")
 
-	use("szw/vim-maximizer")
+	-- use("szw/vim-maximizer")
 
 	use("tpope/vim-surround")
 
@@ -67,8 +67,6 @@ return packer.startup(function(use)
 	-- LSP configuring servers
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/cmp-nvim-lsp")
-	-- use({ "glepnir/lspsaga.nvim", branch = "main" })
-	use("jose-elias-alvarez/typescript.nvim")
 	use("onsails/lspkind.nvim")
 
 	-- formating and linting

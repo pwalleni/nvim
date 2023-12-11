@@ -17,7 +17,10 @@ end
 require("luasnip/loaders/from_vscode").lazy_load()
 
 -- load diataxis-snippets
-require("my_snippets")
+require("pwalleni.snippets.diataxis_snippets")
+
+-- load mkdocs-admonition-snippets
+require("pwalleni.snippets.mkdocs_admonition_snippets")
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
@@ -32,7 +35,7 @@ cmp.setup({
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-n>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
@@ -41,6 +44,8 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
+		{ name = "pwalleni.snippets.diataxis_snippets" },
+		{ name = "pwalleni.snippets.mkdocs_admonition_snippets" },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
