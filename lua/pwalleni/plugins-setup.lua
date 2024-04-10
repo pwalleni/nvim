@@ -101,7 +101,16 @@ return packer.startup(function(use)
 	use("mbbill/undotree")
 
 	-- trouble pane
-	use("folke/trouble.nvim")
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({
+				mode = "document_diagnostics",
+				height = 20,
+				auto_open = true,
+			})
+		end,
+	})
 
 	-- which key
 	use({
