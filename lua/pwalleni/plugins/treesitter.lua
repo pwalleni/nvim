@@ -1,9 +1,4 @@
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-	return
-end
-
-treesitter.setup({
+require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
 	indent = { enable = true },
 	autotag = { enable = true },
@@ -17,5 +12,5 @@ treesitter.setup({
 		"dockerfile",
 		"gitignore",
 	},
-	auto_install = true,
+	auto_install = false,
 })
