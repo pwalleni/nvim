@@ -12,5 +12,5 @@ require("nvim-treesitter.configs").setup({
 		"dockerfile",
 		"gitignore",
 	},
-	auto_install = false,
+	auto_install = true,
 })

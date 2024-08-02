@@ -1,6 +1,31 @@
 return {
 
 	{
+		"junegunn/vim-easy-align",
+	},
+
+	{
+		"kyazdani42/nvim-web-devicons",
+	},
+
+	{
+		"echasnovski/mini.icons",
+	},
+
+	{
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
+
+	{
+		"folke/which-key.nvim",
+	},
+
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("pwalleni.plugins.lsp.lspconfig")
@@ -121,7 +146,7 @@ return {
 		cmd = "Trouble",
 		keys = {
 			{
-				"<leader>t",
+				"<leader>tt",
 				"<cmd>Trouble diagnostics toggle<cr>",
 				desc = "Diagnostics (Trouble)",
 			},
