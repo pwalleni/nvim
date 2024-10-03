@@ -1,6 +1,16 @@
 return {
 
 	{
+		"prettier/vim-prettier",
+		run = "yarn install", -- or 'npm install'
+		ft = { "javascript", "typescript", "css", "less", "scss", "json", "graphql", "vue", "html", "python" },
+		config = function()
+			-- Optional: you can add key mappings or other configurations here
+			vim.cmd([[nnoremap <leader>p :Prettier<CR>]])
+		end,
+	},
+
+	{
 		"junegunn/vim-easy-align",
 	},
 

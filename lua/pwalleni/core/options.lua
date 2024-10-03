@@ -35,3 +35,9 @@ opt.swapfile = false
 opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
+
+-- Enable spell checking by default
+opt.spell = true
+
+-- Set spell language to American English
+opt.spelllang = "en_us"
