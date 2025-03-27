@@ -1,190 +1,151 @@
-return {
+-- plugins-setup.lua
+-- This file initializes and configures all plugins using lazy.nvim
 
+-- Lazy.nvim bootstrap
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Setup plugins
+require("lazy").setup({
+	-- Plugin Manager
+	"folke/lazy.nvim",
+
+	-- Dependencies
+	{ "nvim-lua/plenary.nvim" },
+
+	-- UI
 	{
-		"prettier/vim-prettier",
-		run = "yarn install", -- or 'npm install'
-		ft = { "javascript", "typescript", "css", "less", "scss", "json", "graphql", "vue", "html", "python" },
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			-- Optional: you can add key mappings or other configurations here
-			vim.cmd([[nnoremap <leader>p :Prettier<CR>]])
-		end,
-	},
-
-	{
-		"junegunn/vim-easy-align",
-	},
-
-	{
-		"kyazdani42/nvim-web-devicons",
-	},
-
-	{
-		"echasnovski/mini.icons",
-	},
-
-	{
-		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
-		setup = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	},
-
-	{
-		"folke/which-key.nvim",
-	},
-
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("pwalleni.plugins.lsp.lspconfig")
-		end,
-	},
-
-	-- Telescope FZF Native Extension
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-	},
-
-	-- Colorscheme
-	{
-		"morhetz/gruvbox",
-		config = function()
-			vim.cmd("colorscheme gruvbox")
-		end,
-	},
-
-	-- LSP Plugins
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("pwalleni.plugins.lsp.mason")
+			require("lualine").setup()
 		end,
 	},
 	{
-		"glepnir/lspsaga.nvim",
-		config = function()
-			require("pwalleni.plugins.lsp.lspsaga")
-		end,
-	},
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("pwalleni.plugins.lsp.null-ls")
-		end,
-	},
-	{
-		"jay-babu/mason-null-ls.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			indent = {
+				char = "┊", -- change to "│", "┆", "┊", "¦", or anything you like
+			},
+			scope = {
+				enabled = true,
+				show_start = true,
+				show_end = true,
+			},
+			exclude = {
+				filetypes = { "help", "lazy", "Trouble", "lspinfo" },
+				buftypes = { "terminal", "nofile" },
+			},
 		},
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000, -- makes sure this runs before most others
+		lazy = false, -- load immediately (not on event)
+	},
+
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("mason-null-ls").setup({
-				ensure_installed = nil,
-				automatic_installation = true,
-				automatic_setup = false,
+			require("telescope").setup()
+		end,
+	},
+
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				highlight = { enable = true },
 			})
 		end,
 	},
 
-	-- Completion and Snippets
+	-- Git
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+
+	-- Comment
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
+
+	-- Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
-			{
-				"L3MON4D3/LuaSnip",
-				event = "LspAttach",
-				dependencies = { "rafamadriz/friendly-snippets" },
-				version = "v2.*",
-				build = "make install_jsregexp",
-				init = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-					require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
-				end,
-			},
-
-			"saadparwaiz1/cmp_luasnip",
 		},
 		config = function()
 			require("pwalleni.plugins.nvim-cmp")
 		end,
 	},
 
-	-- Other Plugins
+	-- LSP
 	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
+		"neovim/nvim-lspconfig",
 		config = function()
-			require("pwalleni.plugins.treesitter")
+			require("pwalleni.plugins.lsp.lspconfig")
 		end,
 	},
 	{
-		"lewis6991/gitsigns.nvim",
+		"nvimdev/lspsaga.nvim",
 		config = function()
-			require("pwalleni.plugins.gitsigns")
+			require("pwalleni.plugins.lsp.lspsaga")
 		end,
 	},
 	{
-		"numToStr/Comment.nvim",
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate",
 		config = function()
-			require("pwalleni.plugins.comment")
+			require("pwalleni.plugins.lsp.mason")
 		end,
 	},
 	{
-		"nvim-lualine/lualine.nvim",
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("pwalleni.plugins.lualine")
-		end,
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		config = function()
-			require("pwalleni.plugins.telescope")
+			require("trouble").setup()
 		end,
 	},
 
+	-- 🧼 REPLACEMENT FOR null-ls
 	{
-		"folke/trouble.nvim",
-		opts = {}, -- for default options, refer to the configuration section for custom setup.
-		cmd = "Trouble",
-		keys = {
-			{
-				"<leader>tt",
-				"<cmd>Trouble diagnostics toggle<cr>",
-				desc = "Diagnostics (Trouble)",
-			},
-			{
-				"<leader>xX",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
-				desc = "Symbols (Trouble)",
-			},
-			{
-				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-				desc = "LSP Definitions / references / ... (Trouble)",
-			},
-			{
-				"<leader>xL",
-				"<cmd>Trouble loclist toggle<cr>",
-				desc = "Location List (Trouble)",
-			},
-			{
-				"<leader>xQ",
-				"<cmd>Trouble qflist toggle<cr>",
-				desc = "Quickfix List (Trouble)",
-			},
-		},
+		"nvimtools/none-ls.nvim", -- Fork of null-ls
+		config = function()
+			require("pwalleni.plugins.lsp.none-ls")
+		end,
 	},
-}
+
+	-- Optionally add your snippets here
+}, {
+	ui = {
+		border = "rounded",
+	},
+})
