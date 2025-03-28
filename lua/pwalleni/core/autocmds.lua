@@ -25,16 +25,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		for type, icon in pairs({
-			Error = " ",
-			Warn = " ",
-			Hint = " ",
-			Info = " ",
-		}) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
-	end,
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.HINT] = " ",
+			[vim.diagnostic.severity.INFO] = " ",
+		},
+	},
+	virtual_text = {
+		prefix = "●",
+		source = "if_many",
+	},
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
 })
