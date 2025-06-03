@@ -7,14 +7,14 @@ local lualine_nightfly = require("lualine.themes.nightfly")
 
 local new_colors = {
     blue = "#65D1FF",
-    gree = "#3EFFDC",
+    green = "#3EFFDC",
     violet = "#FF61EF",
     yellow = "#FFDA7B",
     black = "#000000",
 }
 
 lualine_nightfly.normal.a.bg = new_colors.blue
-lualine_nightfly.insert.a.bg = new_colors.gree
+lualine_nightfly.insert.a.bg = new_colors.green
 lualine_nightfly.visual.a.bg = new_colors.violet
 lualine_nightfly.command = {
     a = {
