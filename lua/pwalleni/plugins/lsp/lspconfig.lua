@@ -93,7 +93,7 @@ lspconfig["lua_ls"].setup({
 
 -- Vale
 lspconfig.vale_ls.setup({
-	cmd = { "/usr/local/bin/vale-ls" },
+	cmd = { "/Users/PWALLENI/.local/share/nvim/mason/bin/vale-ls" },
 	filetypes = { "markdown", "text", "asciidoc", "rst" },
 	root_dir = lspconfig.util.root_pattern(".vale.ini", ".git"),
 	on_attach = on_attach,

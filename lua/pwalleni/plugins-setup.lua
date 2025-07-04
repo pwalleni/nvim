@@ -128,6 +128,21 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"ts_ls",
+					"marksman",
+					"html",
+					"lua_ls",
+					"vale_ls",
+				},
+			})
+		end,
+	},
+	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
