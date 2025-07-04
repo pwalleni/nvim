@@ -43,6 +43,46 @@ local mkdocs_admonition_snippets = {
 			"",
 		}),
 	}),
+	s("admonition-danger", {
+		t({
+			'!!! danger "Danger"',
+			"",
+			"    Danger content goes here.",
+			"",
+		}),
+	}),
+	s("admonition-success", {
+		t({
+			'!!! success "Success"',
+			"",
+			"    Success content goes here.",
+			"",
+		}),
+	}),
+	s("admonition-question", {
+		t({
+			'!!! question "Question"',
+			"",
+			"    Question content goes here.",
+			"",
+		}),
+	}),
+	s("admonition-example", {
+		t({
+			'!!! example "Example"',
+			"",
+			"    Example content goes here.",
+			"",
+		}),
+	}),
+	s("admonition-quote", {
+		t({
+			'!!! quote "Quote"',
+			"",
+			"    Quote content goes here.",
+			"",
+		}),
+	}),
 }
 
 ls.add_snippets("markdown", mkdocs_admonition_snippets)

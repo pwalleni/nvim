@@ -47,3 +47,31 @@ telescope.setup({
 
 -- Load extensions
 telescope.load_extension("fzf")
+
+-- Custom pickers for TechDocs
+local builtin = require('telescope.builtin')
+
+-- Find markdown files
+vim.keymap.set('n', '<leader>fmd', function()
+	builtin.find_files({
+		prompt_title = "Find Markdown Files",
+		find_command = { "find", ".", "-name", "*.md", "-type", "f" },
+	})
+end, { desc = "Find Markdown Files" })
+
+-- Search in markdown files only
+vim.keymap.set('n', '<leader>smd', function()
+	builtin.live_grep({
+		prompt_title = "Search in Markdown",
+		type_filter = "markdown",
+		glob_pattern = "*.md",
+	})
+end, { desc = "Search in Markdown Files" })
+
+-- Find mkdocs.yml files
+vim.keymap.set('n', '<leader>fmk', function()
+	builtin.find_files({
+		prompt_title = "Find MkDocs Config",
+		find_command = { "find", ".", "-name", "mkdocs.yml", "-o", "-name", "mkdocs.yaml", "-type", "f" },
+	})
+end, { desc = "Find MkDocs Config" })

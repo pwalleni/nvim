@@ -33,6 +33,18 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List Buffe
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
 keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "List Keymaps" })
 
+-- File tree
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle File Tree" })
+keymap.set("n", "<leader>ef", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle File Tree on Current File" })
+
+-- Markdown preview
+keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", { desc = "Toggle Markdown Preview" })
+
+-- Table mode
+keymap.set("n", "<leader>tm", ":TableModeToggle<CR>", { desc = "Toggle Table Mode" })
+keymap.set("n", "<leader>tt", ":Tableize<CR>", { desc = "Convert to Table" })
+keymap.set("v", "<leader>tt", ":Tableize<CR>", { desc = "Convert Selection to Table" })
+
 -- Spell checking keymaps
 
 keymap.set("n", "<leader>sn", "]s", { noremap = true, silent = true, desc = "Next Misspelled Word" })
@@ -40,3 +52,19 @@ keymap.set("n", "<leader>sp", "[s", { noremap = true, silent = true, desc = "Pre
 keymap.set("n", "<leader>ss", "z=", { noremap = true, silent = true, desc = "Show Spelling Suggestions" })
 keymap.set("n", "<leader>sa", "zg", { noremap = true, silent = true, desc = "Add Word to Good List" })
 keymap.set("n", "<leader>sw", "zw", { noremap = true, silent = true, desc = "Mark Word as Bad" })
+
+-- Markdown navigation and editing
+keymap.set("n", "<leader>mf", ":MkdnFollowLink<CR>", { desc = "Follow Markdown Link" })
+keymap.set("n", "<leader>mb", ":MkdnGoBack<CR>", { desc = "Go Back in Markdown Navigation" })
+keymap.set("n", "<leader>mc", ":MkdnCreateLink<CR>", { desc = "Create Markdown Link" })
+keymap.set("v", "<leader>mc", ":MkdnCreateLink<CR>", { desc = "Create Markdown Link from Selection" })
+keymap.set("n", "<leader>md", ":MkdnDestroyLink<CR>", { desc = "Destroy Markdown Link" })
+keymap.set("n", "<leader>mt", ":MkdnToggleToDo<CR>", { desc = "Toggle Todo Item" })
+keymap.set("v", "<leader>mt", ":MkdnToggleToDo<CR>", { desc = "Toggle Todo Items" })
+
+-- Heading manipulation
+keymap.set("n", "<leader>mh+", ":MkdnIncreaseHeading<CR>", { desc = "Increase Heading Level" })
+keymap.set("n", "<leader>mh-", ":MkdnDecreaseHeading<CR>", { desc = "Decrease Heading Level" })
+
+-- YAML telescope integration
+keymap.set("n", "<leader>fy", ":Telescope yaml_schema<CR>", { desc = "Find YAML Schema" })

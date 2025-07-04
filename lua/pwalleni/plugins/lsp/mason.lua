@@ -8,5 +8,6 @@ require("mason-lspconfig").setup({
 		"html",
 		"lua_ls",
 		"vale_ls",
+		"yamlls",
 	},
 })

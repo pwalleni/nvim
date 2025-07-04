@@ -98,3 +98,20 @@ lspconfig.vale_ls.setup({
 	root_dir = lspconfig.util.root_pattern(".vale.ini", ".git"),
 	on_attach = on_attach,
 })
+
+-- YAML
+lspconfig["yamlls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		yaml = {
+			schemas = {
+				["https://json.schemastore.org/mkdocs-1.0.json"] = "mkdocs.yml",
+				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+			},
+			validate = true,
+			completion = true,
+			hover = true,
+		},
+	},
+})

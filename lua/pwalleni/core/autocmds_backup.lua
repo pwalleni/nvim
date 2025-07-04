@@ -1,4 +1,18 @@
--- Auto open Trouble when diagnostics first appear in markdown files
+-- Auto open Trouble when diagnostics first a-- Markdown-specific settings
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		-- Better wrapping for markdown
+		vim.opt_local.linebreak = true
+		vim.opt_local.wrap = true
+		vim.opt_local.textwidth = 80
+		vim.opt_local.conceallevel = 2
+		
+		-- Set markdown-specific options
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = "en_us"
+	end,
+}),files
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf
@@ -28,10 +42,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.diagnostic.config({
 	signs = {
 		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = " ",
-			[vim.diagnostic.severity.INFO] = " ",
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.HINT] = " ",
+			[vim.diagnostic.severity.INFO] = " ",
 		},
 	},
 	virtual_text = {
@@ -52,6 +66,9 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.wrap = true
 		vim.opt_local.textwidth = 80
 		vim.opt_local.conceallevel = 2
+		
+		-- Enable table mode by default for markdown
+		vim.cmd("TableModeEnable")
 		
 		-- Set markdown-specific options
 		vim.opt_local.spell = true
