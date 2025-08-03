@@ -24,13 +24,13 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 
 	-- UI
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("lualine").setup()
-		end,
-	},
+        {
+                "nvim-lualine/lualine.nvim",
+                dependencies = { "nvim-tree/nvim-web-devicons" },
+                config = function()
+                        require("pwalleni.plugins.lualine")
+                end,
+        },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
@@ -77,20 +77,20 @@ require("lazy").setup({
 	},
 
 	-- Git
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	},
+        {
+                "lewis6991/gitsigns.nvim",
+                config = function()
+                        require("pwalleni.plugins.gitsigns")
+                end,
+        },
 
 	-- Comment
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
+        {
+                "numToStr/Comment.nvim",
+                config = function()
+                        require("pwalleni.plugins.comment")
+                end,
+        },
 
 	-- File Tree
 	{
