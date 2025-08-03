@@ -24,10 +24,10 @@ null_ls.setup({
 		diagnostics.markdownlint,
 	},
 	on_attach = function(current_client, bufnr)
-		-- diagnostic debug
-		print("Formatter client name: ", current_client.name)
+                -- diagnostic debug
+                vim.notify("Formatter client name: " .. current_client.name, vim.log.levels.DEBUG)
 
-		vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+                vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
 
 		if current_client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
