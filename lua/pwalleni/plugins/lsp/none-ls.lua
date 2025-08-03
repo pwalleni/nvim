@@ -8,17 +8,8 @@ end
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
--- enable virtual text diagnostics (inline)
-vim.diagnostic.config({
-	virtual_text = {
-		prefix = "●", -- could be "●", "■", "▶", or ""
-		source = "if_many", -- always / if_many / false
-	},
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
-})
+local diagnostic_config = require("pwalleni.core.diagnostics")
+diagnostic_config.setup()
 
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
