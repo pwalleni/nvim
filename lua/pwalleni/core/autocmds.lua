@@ -1,3 +1,6 @@
+local diagnostic_config = require("pwalleni.core.diagnostics")
+diagnostic_config.setup()
+
 -- Auto open Trouble when diagnostics first appear in markdown files
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
@@ -23,24 +26,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			end,
 		})
 	end,
-})
-
-vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = " ",
-			[vim.diagnostic.severity.INFO] = " ",
-		},
-	},
-	virtual_text = {
-		prefix = "●",
-		source = "if_many",
-	},
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
 })
 
 -- Markdown-specific settings

@@ -38,24 +38,8 @@ end
 -- Completion capabilities
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- Configure diagnostic UI
-vim.diagnostic.config({
-	virtual_text = {
-		prefix = "●",
-		source = "always",
-	},
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = " ",
-			[vim.diagnostic.severity.INFO] = " ",
-		},
-	},
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
-})
+local diagnostic_config = require("pwalleni.core.diagnostics")
+diagnostic_config.setup()
 
 -- Markdown LSP
 lspconfig.marksman.setup({
